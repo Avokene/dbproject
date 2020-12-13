@@ -9,6 +9,9 @@ import Movie from './views/movie';
 import MovieShow from './views/MovieShow';
 import Payment from './views/Payment';
 import MyPage from './views/myPage';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import MyRentList from './views/myRentList';
+import BestRating from './views/bestRating';
 
 const Stack = createStackNavigator();
 
@@ -24,6 +27,8 @@ class App extends Component{
           <Stack.Screen name='MovieShow' component={MovieShow} options={{headerShown:false}}/>
           <Stack.Screen name='Payment' component={Payment} options={{headerShown:false}}/>
           <Stack.Screen name='MyPage' component={MyPage} options={{headerShown:false}}/>
+          <Stack.Screen name='MyRentList' component={MyRentList} options={{headerShown:false}}/>
+          <Stack.Screen name='BestRating' component={BestRating} options={{headerShown:false}}/>
         </Stack.Navigator>
       </NavigationContainer>
     );

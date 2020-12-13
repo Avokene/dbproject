@@ -4,6 +4,7 @@ import {Container, Header, Content, Text, Button, View, Body, Form, Item,
 } from 'native-base';
 import { Alert } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import rentList from '../rentList';
 
 import IconI from 'react-native-vector-icons/Ionicons';
 IconI.loadFont();
@@ -12,25 +13,16 @@ class MovieShow extends Component{
   constructor(props){
     super(props)
     this.state={
-      rentList:[],
       movie_data:this.props.route.params.movie_data,
     }
   }
 
   onRent = async () => {
-    if(this.state.rentList.length > 2) return Alert.alert('Fail')
+    if(rentList.length > 2) return Alert.alert('Fail','Please Return Videos')
     else{
-      this.state.rentList.push(this.state.movie_data)
-      AsyncStorage.setItem('rentList',JSON.stringify(this.state.rentList))
+      rentList.push(this.state.movie_data)
       Alert.alert('Success', `Sucessfully rented ${this.state.movie_data.movie_name}`);
     }
-  }
-
-  componentDidMount(){
-    let temp = AsyncStorage.getItem('rentList');
-    if(!temp)
-      this.state.rentList = temp;
-    console.log(this.state.rentList);
   }
 
   render(){
